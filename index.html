@@ -425,7 +425,8 @@ function buildYieldTable(p,vol,conc,activeDose,stype) {
     if(doses<1) return '';
     const syringeWarn=ui>stype?`<span class="yield-warn"> ⚠️ seringa 1mL</span>`:'';
     const needBigSyringe=ui>50?`<span style="font-size:9px;color:var(--amber)"> (ser. 1mL)</span>`:'';
-    const weeksNote=doses>=4?` · ${Math.floor(doses/4)} mês${Math.floor(doses/4)>1?'es':''}`:'';
+    const _months=Math.floor(doses/4);
+    const weeksNote=doses>=4?` · ${_months} ${_months>1?'meses':'mês'}`:'';
     return `<tr class="${isActive?'active-row':''}">
       <td><strong>${fmtMg(d)}</strong></td>
       <td class="${isActive?'':'yield-ui'}">${fmtUI(ui)} UI${syringeWarn}${needBigSyringe}</td>
